@@ -29,15 +29,13 @@ import uuid
 
 # Setup Chrome WebDriver - Configure Selenium to use Chrome
 options = Options()
-# options.add_argument("--headless=new")  # Correct syntax for headless
+options.add_argument("--headless=new")  # Correct syntax for headless
 options.add_argument("--disable-popup-blocking")
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--start-maximized")
 options.add_argument("user-agent=Mozilla/5.0")
-user_data_dir = os.path.join(tempfile.gettempdir(), str(uuid.uuid4()))
-options.add_argument(f"--user-data-dir={user_data_dir}")
 
 # # Optional: Disable image loading (better done via prefs)
 # prefs = {"profile.managed_default_content_settings.images": 2}
@@ -62,7 +60,6 @@ cities = [] # Save cities list here
 # Funtion to start a browser
 def start_browser():
     """Starts a new browser session."""
-    print(options.arguments)
     driver = webdriver.Chrome(service=Service(), options=options)
     driver.maximize_window()
     wait = WebDriverWait(driver, WAIT_TIME, poll_frequency=0.5)
