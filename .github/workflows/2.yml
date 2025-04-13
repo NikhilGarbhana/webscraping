@@ -1,4 +1,4 @@
-name: Run TVS Scraper
+name: Run TVS2 Scraper
 
 on:
   workflow_dispatch:
