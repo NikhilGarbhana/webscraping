@@ -18,17 +18,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd tvs
+          cd 1
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run script
         run: |
-          cd tvs
-          python tvs_scraper.py
+          cd 1
+          python tvs.py
 
       - name: Upload CSV artifact
         uses: actions/upload-artifact@v4
         with:
           name: scraped-data
-          path: tvs/tvs_showrooms_*.csv
+          path: 1/tvs_showrooms_*.csv
