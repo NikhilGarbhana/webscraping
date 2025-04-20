@@ -98,7 +98,7 @@ def search(wait, option_city):
     time.sleep(3)
 
 # Function to scrape dealer details
-def scrape_dealers(driver):
+def scrape_dealers(driver, area, city, state):
     """Extracts dealer details from the page source."""
     soup = BeautifulSoup(driver.page_source, "html.parser")
     dealers = []
@@ -116,7 +116,8 @@ def scrape_dealers(driver):
                 name.text.strip() if name else "",
                 address.text.strip() if address else "",
                 phone.text.strip() if phone else "",
-                email.text.strip() if email else ""
+                email.text.strip() if email else "",
+                area, city, state
             ])
     
     # if not dealers:
@@ -168,8 +169,9 @@ def main():
                                 ele = driver.find_element(By.CLASS_NAME, 'latlong-leaflet-autocomplete-li')
                                 ele.click()
                                 time.sleep(2)
+                                area = temp[j]
                                 # Scrape dealers (you may want to call the scrape_dealers function here)
-                                dealers = scrape_dealers(driver)
+                                dealers = scrape_dealers(driver, area, option_city, option_state)
                                 data.extend(dealers)
                                 break
                             except Exception as e:
