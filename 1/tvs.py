@@ -112,17 +112,11 @@ def scrape_dealers(driver, area, city, state):
             phone = showroom.find("div", class_="latlong-list-phonenumber")
             email = showroom.find("div", class_="email-contact")
             
-            dealers.append([
-                name.text.strip() if name else "",
-                address.text.strip() if address else "",
-                phone.text.strip() if phone else "",
-                email.text.strip() if email else "",
-                area, city, state
-            ])
+            dealers.append([name.text.strip() if name else "", address.text.strip() if address else "", phone.text.strip() if phone else "", email.text.strip() if email else "", area, city, state])
     
     # if not dealers:
     #     print("[WARNING] No dealers found, might be a loading issue.")
-    
+    print(dealers)
     return dealers
     
 def main():
@@ -131,7 +125,7 @@ def main():
     items = list(state_cities.items())
     
     # Compute chunk size
-    chunk_size = len(items) // 3 + (len(items) % 3 > 0)
+    chunk_size = len(items) // 100 + (len(items) % 100 > 0)
     
     # Split into three dictionaries
     dict1 = dict(items[:chunk_size])
