@@ -183,6 +183,6 @@ def main():
 if __name__ == "__main__":
     main()
     ###------------------ DATA SAVING SECTION ------------------###
-    df = pd.DataFrame(data, columns=["Showroom Name", "Address", "Phone", "Mail", "Area", "City", "State"]).drop_duplicates()
+    df = pd.DataFrame(data, columns=["Showroom Name", "Address", "Phone", "Mail", "City", "State"]).drop_duplicates()
     filename = f"tvs_showrooms_1_{today}.csv"
     df.to_csv(filename, index=False)
