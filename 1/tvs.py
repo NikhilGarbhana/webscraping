@@ -125,7 +125,7 @@ def main():
     items = list(state_cities.items())
     
     # Compute chunk size
-    chunk_size = len(items) // 100 + (len(items) % 100 > 0)
+    chunk_size = len(items) // 3 + (len(items) % 3 > 0)
     
     # Split into three dictionaries
     dict1 = dict(items[:chunk_size])
