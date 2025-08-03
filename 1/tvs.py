@@ -135,7 +135,7 @@ def main():
     
     driver, wait = start_browser()
     
-    for option_state in dict3.keys():
+    for option_state in dict2.keys():
         for k,option_city in enumerate(state_cities[option_state]):
             if k > 0 and k % RESTART_BROWSER_AFTER == 0:
                 # print("[INFO] Restarting browser to free memory...")
@@ -184,5 +184,5 @@ if __name__ == "__main__":
     main()
     ###------------------ DATA SAVING SECTION ------------------###
     df = pd.DataFrame(data, columns=["Showroom Name", "Address", "Phone", "Mail", "City", "State"]).drop_duplicates()
-    filename = f"tvs_showrooms_3_{today}.csv"
+    filename = f"tvs_showrooms_2_{today}.csv"
     df.to_csv(filename, index=False)
