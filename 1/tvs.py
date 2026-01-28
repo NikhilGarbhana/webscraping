@@ -26,7 +26,7 @@ import re
 
 # Setup Chrome WebDriver - Configure Selenium to use Chrome
 options = Options()
-options.add_argument("--headless=new")  # Correct syntax for headless
+# options.add_argument("--headless=new")  # Correct syntax for headless
 options.add_argument("--disable-popup-blocking")
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
@@ -131,7 +131,7 @@ def scrape_dealers(driver, city, state):
 def main():
     cities()
     driver, wait = start_browser()
-    for option_state in list(state_cities.keys())[30:]:
+    for option_state in list(state_cities.keys())[:5]:
         for k,option_city in enumerate(state_cities[option_state]):
         # for k,option_city in list(enumerate(state_cities[option_state]))[:2]:
             retry_count_city = 0
